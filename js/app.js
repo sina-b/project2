@@ -43,8 +43,8 @@ let modalAppear = function() {
 
         let timing = timer.innerHTML;
         let starNumber = document.querySelector(".stars").innerHTML;
-    
-        document.getElementById("modal-popup").style.display = "block";
+        $('#modal-popup').modal('show');
+
         document.querySelector(".total-moves").innerHTML = counting;
         document.querySelector(".total-time").innerHTML = timing;
         document.querySelector(".total-stars").innerHTML = starNumber;
@@ -56,7 +56,7 @@ let modalAppear = function() {
 //close modal
 function closeModal() {
     button.addEventListener("click", function() {
-      document.getElementById("modal-popup").style.display = "none";
+      $('#modal-popup').modal('hide');
       startGame();
       for (let i = 0; i < stars.length; i++) {
         stars[i].style.visibility = "visible";
