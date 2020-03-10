@@ -48,7 +48,7 @@ let modalAppear = function() {
         document.querySelector(".total-moves").innerHTML = counting;
         document.querySelector(".total-time").innerHTML = timing;
         document.querySelector(".total-stars").innerHTML = starNumber;
-    
+
         closeModal();
     }
   };
@@ -61,7 +61,7 @@ function closeModal() {
       for (let i = 0; i < stars.length; i++) {
         stars[i].style.visibility = "visible";
       }
-  
+
       min = 0;
       sec = 0;
       setInterval(function() {
@@ -85,15 +85,12 @@ function noMatch() {
 
 //matching cards
 function match() {
-    openList[0].classList.remove("open", "show");
     openList[0].classList.add("match");
-    openList[1].classList.remove("open", "show");
     openList[1].classList.add("match");
     matchList.push(openList[0]);
     matchList.push(openList[1]);
     openList.splice(0, 2);
   }
-  
 
 //enable click event on cards
 function startClick() {
@@ -113,7 +110,7 @@ function stopClick() {
 function countMoves() {
     counting++;
     moves.innerHTML = counting;
-  
+
     //remove stars after a number of moves
     if (counting > 5 && counting < 10) {
       for (let i = 0; i < 3; i++) {
@@ -155,7 +152,7 @@ let openedCard = function() {
 function shuffle(array) {
     var currentIndex = array.length,
       temporaryValue, randomIndex;
-  
+
     while (currentIndex !== 0) {
       randomIndex = Math.floor(Math.random() * currentIndex);
       currentIndex -= 1;
@@ -182,7 +179,7 @@ restart.addEventListener("click", function() {
     min = 0;
     sec = 0;
   });
-  
+
 //start game
 function startGame() {
     gameWon = false;
@@ -191,7 +188,7 @@ function startGame() {
     let appending = function(item) {
       deck.appendChild(item);
     };
-  
+
     for (let i = 0; i < shuffled.length; i++) {
       deck.innerHTML = "";
       [].forEach.call(shuffled, appending);
@@ -199,6 +196,8 @@ function startGame() {
     }
 
     matchList.splice(0, 10);
+    matchList[1].classList.remove("open", "show");
+    matchList[0].classList.remove("open", "show");
     counting = 0;
     moves.innerHTML = counting;
   }
